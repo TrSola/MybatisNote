@@ -1,24 +1,23 @@
-package com.willy;
-
-import java.time.LocalDate;
-import java.util.List;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import com.willy.mapper.EmpMapper;
-import com.willy.pojo.Emp;
-
-@SpringBootTest
-public class MybatisSearchTest {
+	package com.willy;
 	
-	@Autowired 
-	private EmpMapper empMapper;
+	import java.util.Arrays;
+	import java.util.List;
 	
-	@Test
-	public void testList() {
-		List<Emp> empList = empMapper.list("張", (short)(1), LocalDate.of(1010, 1, 1), LocalDate.of(3000, 1, 1));
-		System.out.println(empList);
+	import org.junit.jupiter.api.Test;
+	import org.springframework.beans.factory.annotation.Autowired;
+	import org.springframework.boot.test.context.SpringBootTest;
+	
+	import com.willy.mapper.EmpMapper;
+	
+	@SpringBootTest
+	public class MybatisSearchTest {
+	
+		@Autowired
+		private EmpMapper empMapper;
+		
+		@Test
+		public void testDelete() {
+			List<Integer> ids = Arrays.asList(20, 21, 15);
+			empMapper.deleteByIDs(ids);
+		}
 	}
-}
